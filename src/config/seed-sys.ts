@@ -14,6 +14,7 @@ const sysadminData = {
   mail: 'sysadmin@email.com',
   password: '1234@Test',
   changePassword: true,
+  rolePermission: SYSADMIN,
   status: true,
   createdAt: new Date(),
   updatedAt: new Date(),
@@ -24,16 +25,16 @@ async function bootstrap() {
     await mongoose.connect(DATABASE_URL);
     console.log('Database Connected');
 
-    const loginRegisterModel = mongoose.model('login_register', UserSchema, 'login_register');
+    const userSchemaModel = mongoose.model('user', UserSchema, 'user');
 
     const hashPassword = await bcrypt.hash(sysadminData.password, 10);
 
-    const countSysAdmin = await loginRegisterModel.countDocuments({
-      profileName: SYSADMIN,
+    const countSysAdmin = await userSchemaModel.countDocuments({
+      rolePermission: SYSADMIN,
     });
 
     if (!countSysAdmin) {
-      const newSYSAdmin = new loginRegisterModel({
+      const newSYSAdmin = new userSchemaModel({
         ...sysadminData,
         password: hashPassword,
       });

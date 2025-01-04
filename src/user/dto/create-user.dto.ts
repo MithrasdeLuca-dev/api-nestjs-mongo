@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, Length, Matches, Validate } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, Length, Matches, Validate } from 'class-validator';
+import { RoleTypePermission } from 'src/config/auth/enum/UserType.enum';
 import { userValidationMessagesError } from '../messages/validation.messages.user';
 import { ValidatePassword } from './ValidatePassword.dto';
 
@@ -17,6 +18,10 @@ export class UserDto {
   @Matches(fullNameRegex, { message: userValidationMessagesError.REGISTER_NAME_NOT_VALID })
   @IsNotEmpty({ message: userValidationMessagesError.REGISTER_NAME_NOT_EMPTY })
     fullName: string;
+
+  @IsEnum(RoleTypePermission, { message: userValidationMessagesError.REGISTER_ROLE_PERMISSION_NOT_VALID})
+  @IsNotEmpty({ message: userValidationMessagesError.REGISTER_ROLE_PERMISSION_NOT_VALID })
+    rolePermission: string;
 
   @ApiProperty({
     description: 'O e-mail é necessário para o login, mas não necessariamente precisa ser o mesmo e-mail da rede social que estiver conectada. Login sem rede social precisa de uma senha.',

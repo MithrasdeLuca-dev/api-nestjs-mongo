@@ -13,6 +13,9 @@ export class User {
     mail: string;
 
   @Prop({ required: true })
+    rolePermission: string;
+
+  @Prop({ required: true })
     password: string;
 
   @Prop({ required: true, default: false })

@@ -19,8 +19,8 @@ export const userValidationMessagesError = {
   UPDATE_REGISTER_CONFIRM_PASSWORD_NOT_VALID: 'As senhas não coincidem.',
 
   REGISTER_ROLE_NAME_NOT_VALID: 'O campo cargo é obrigatório.',
-  REGISTER_DEPARTMENT_NOT_VALID: 'O campo departamento é obrigatório.',
-  REGISTER_ACCESS_PROFILE_NOT_VALID: 'O campo perfil de acesso é obrigatório.',
+  REGISTER_ROLE_PERMISSION_NOT_VALID: 'Perfil de acesso inválido!',
+  REGISTER_ROLE_PERMISSION_NOT_EMPTY: 'O campo perfil de acesso é obrigatório.',
 
   REGISTER_MATRIZ_NOT_VALID: 'O campo CNPJ deve ter 14 dígitos numéricos.',
   REGISTER_MATRIZ_NOT_EMPTY: 'O campo CNPJ é obrigatório.',
